@@ -41,7 +41,8 @@ hs.hotkey.bind({"ctrl","cmd"}, "P", function()
     local allApps = hs.application.runningApplications()
     for i = 1, #allApps do
         local app = allApps[i]
-        if (app:name() == "Xcode")
+        local appName = app:name()
+        if (appName == "Xcode" or appName == "iTerm2")
         then
             app:kill9()
         end 
