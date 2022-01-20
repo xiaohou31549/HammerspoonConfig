@@ -35,3 +35,17 @@ hs.hotkey.bind({"alt"}, "L", function()
     hs.caffeinate.lockScreen()
 end
 )
+
+-- 杀死所有的Application && 关机
+hs.hotkey.bind({"ctrl","cmd"}, "P", function()
+    local allApps = hs.application.runningApplications()
+    for i = 1, #allApps do
+        local app = allApps[i]
+        if (app:name() == "Xcode")
+        then
+            app:kill9()
+        end 
+    end
+    hs.caffeinate.shutdownSystem().shutdownSystem()
+end
+)
